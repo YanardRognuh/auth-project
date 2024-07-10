@@ -4,7 +4,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { login } from "@/actions/auth";
+import { login } from "@/actions";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 
@@ -44,7 +44,6 @@ export function LoginForm() {
     setIsLoading(true);
     try {
       await login(values);
-      // If we reach this point, it means login was successful
       toast.success("Login successful");
       router.push("/dashboard");
     } catch (error) {

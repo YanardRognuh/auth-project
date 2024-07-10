@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { logout } from "@/actions/auth";
+import { logout } from "@/actions";
 
 export default function DashboardContent() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +13,7 @@ export default function DashboardContent() {
   const handleLogout = async () => {
     await logout();
     toast.success("Logged out successfully");
-    router.push("/LoginPage");
+    router.push("/login");
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function DashboardContent() {
         setIsLoading(false);
       } catch (error) {
         toast.error("Your session has expired. Please log in again.");
-        router.push("/LoginPage");
+        router.push("/login");
       }
     }
 

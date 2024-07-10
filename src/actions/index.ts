@@ -25,12 +25,5 @@ export async function login(data: LoginData) {
 
 export async function logout() {
   cookies().delete("auth-token");
-  redirect("/>LoginPage");
-}
-
-export async function checkAuth() {
-  const token = cookies().get("auth-token");
-  if (!token) {
-    redirect("/LoginPage");
-  }
+  redirect("/>login");
 }
